@@ -32,9 +32,26 @@ The `macdeploy.sh` script will deploy mac bundle to dmg including dependencies.
 ./macdeploy.sh -e <path>/logctool -d <path>/dependencies -p <path>/path to deploy
 ```
 
-Web Resources
+Dependencies
 -------------
 
-* GitHub page:        https://github.com/mikaelsundell/overlaytool
-* Issues              https://github.com/mikaelsundell/overlaytool/issues
+| Project     | Description |
+| ----------- | ----------- |
+| Imath       | [Imath project @ Github](https://github.com/AcademySoftwareFoundation/Imath)
+| OpenImageIO | [OpenImageIO project @ Github](https://github.com/OpenImageIO/oiio)
+| 3rdparty    | [3rdparty project containing all dependencies @ Github](https://github.com/mikaelsundell/3rdparty)
 
+Resources
+-------------
+
+* GitHub page   
+https://github.com/mikaelsundell/overlaytool
+* Issues   
+https://github.com/mikaelsundell/overlaytool/issues
+
+Copyright
+---------
+
+* Roboto font   
+https://fonts.google.com/specimen/Roboto   
+Designed by Christian Robertson

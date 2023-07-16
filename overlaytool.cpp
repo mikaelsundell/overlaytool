@@ -1,6 +1,6 @@
 //
 // SPDX-License-Identifier: BSD-3-Clause
-// Copyright (c) 2022 - present Mikael Sundell.
+// Copyright (c) 2023 - present Mikael Sundell.
 //
 
 #include <iostream>
