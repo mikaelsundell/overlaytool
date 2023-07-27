@@ -153,11 +153,11 @@ void renderBoxByThickness(ImageBuf& imagebuf, ROI roi, Imath::Vec3<float> color,
     for (int t=0; t<thickness; t++) {
         ImageBufAlgo::render_box(
             imagebuf, roi.xbegin + t, roi.ybegin + t, roi.xend - t - 1, roi.yend - t - 1,
-            { color.x, color.y, color.z }
+            { color.x, color.y, color.z, 1.0f }
         );
         ImageBufAlgo::render_box(
             imagebuf, roi.xbegin - t, roi.ybegin - t, roi.xend + t - 1, roi.yend + t - 1,
-            { color.x, color.y, color.z }
+            { color.x, color.y, color.z, 1.0f }
         );
     }
 }
@@ -181,7 +181,7 @@ void renderLineByPattern(ImageBuf& imagebuf, ROI roi, Imath::Vec3<float> color, 
                 ybegin,
                 xend,
                 yend,
-                { color.x, color.y, color.z }
+                { color.x, color.y, color.z, 1.0f }
             );
         }
     }
@@ -306,6 +306,7 @@ main( int argc, const char * argv[])
       .help("Set size (default: 1024, 1024)")
       .action(set_size);
     
+    ap.separator("Output flags:");
     ap.arg("--outputfile %s:OUTPUTFILE")
       .help("Set output file")
       .action(set_outputfile);
@@ -336,7 +337,7 @@ main( int argc, const char * argv[])
     }
 
     // overlay program
-    std::cout << "overlaytool-- a utility for creating overlay images" << std::endl;
+    std::cout << "overlaytool -- a utility for creating overlay images" << std::endl;
 
     print_info("Writing overlay file: ", tool.outputfile);
     ImageSpec spec(tool.size.x, tool.size.y, 4, TypeDesc::FLOAT);
@@ -383,7 +384,7 @@ main( int argc, const char * argv[])
             center.y,
             xend,
             center.y,
-            { tool.color.x, tool.color.y, tool.color.z }
+            { tool.color.x, tool.color.y, tool.color.z, 1.0f }
         );
         
         int ybegin = center.y - (cross / 2);
@@ -394,7 +395,7 @@ main( int argc, const char * argv[])
             ybegin,
             center.x,
             yend,
-            { tool.color.x, tool.color.y, tool.color.z }
+            { tool.color.x, tool.color.y, tool.color.z, 1.0f }
         );
     }
     
@@ -408,7 +409,7 @@ main( int argc, const char * argv[])
             arroi.yend - 1,
             arroi.xend - 1,
             arroi.ybegin,
-            { tool.color.x, tool.color.y, tool.color.z }
+            { tool.color.x, tool.color.y, tool.color.z, 1.0f }
         );
         
         // diagonals
@@ -426,7 +427,7 @@ main( int argc, const char * argv[])
                 diagonal.ybegin,
                 diagonal.xend,
                 diagonal.yend,
-                { tool.color.x, tool.color.y, tool.color.z }
+                { tool.color.x, tool.color.y, tool.color.z, 1.0f }
             );
             
             // reciprocals
@@ -451,7 +452,7 @@ main( int argc, const char * argv[])
                         arroi.ybegin,
                         arroi.xbegin + length,
                         arroi.yend,
-                        { tool.color.x, tool.color.y, tool.color.z }
+                        { tool.color.x, tool.color.y, tool.color.z, 1.0f }
                     );
                     
                     ImageBufAlgo::render_line(
@@ -460,7 +461,7 @@ main( int argc, const char * argv[])
                         arroi.yend,
                         arroi.xbegin + length,
                         arroi.ybegin,
-                        { tool.color.x, tool.color.y, tool.color.z }
+                        { tool.color.x, tool.color.y, tool.color.z, 1.0f }
                     );
                     
                     ImageBufAlgo::render_line(
@@ -469,7 +470,7 @@ main( int argc, const char * argv[])
                         arroi.ybegin,
                         arroi.xend - length,
                         arroi.yend,
-                        { tool.color.x, tool.color.y, tool.color.z }
+                        { tool.color.x, tool.color.y, tool.color.z, 1.0f }
                     );
                     
                     ImageBufAlgo::render_line(
@@ -478,7 +479,7 @@ main( int argc, const char * argv[])
                         arroi.yend,
                         arroi.xend - length,
                         arroi.ybegin,
-                        { tool.color.x, tool.color.y, tool.color.z }
+                        { tool.color.x, tool.color.y, tool.color.z, 1.0f }
                     );
                 }
                 
@@ -490,7 +491,7 @@ main( int argc, const char * argv[])
                         arroi.ybegin,
                         arroi.xbegin + cross.x,
                         arroi.yend,
-                        { tool.color.x, tool.color.y, tool.color.z }
+                        { tool.color.x, tool.color.y, tool.color.z, 1.0f }
                     );
                     
                     ImageBufAlgo::render_line(
@@ -499,7 +500,7 @@ main( int argc, const char * argv[])
                         arroi.ybegin,
                         arroi.xend - cross.x,
                         arroi.yend,
-                        { tool.color.x, tool.color.y, tool.color.z }
+                        { tool.color.x, tool.color.y, tool.color.z, 1.0f }
                     );
                     
                     ImageBufAlgo::render_line(
@@ -508,7 +509,7 @@ main( int argc, const char * argv[])
                         arroi.yend - cross.y,
                         arroi.xend,
                         arroi.yend - cross.y,
-                        { tool.color.x, tool.color.y, tool.color.z }
+                        { tool.color.x, tool.color.y, tool.color.z, 1.0f }
                     );
                     
                     ImageBufAlgo::render_line(
@@ -517,7 +518,7 @@ main( int argc, const char * argv[])
                         arroi.ybegin + cross.y,
                         arroi.xend,
                         arroi.ybegin + cross.y,
-                        { tool.color.x, tool.color.y, tool.color.z }
+                        { tool.color.x, tool.color.y, tool.color.z, 1.0f }
                     );
                 }
                 
@@ -531,7 +532,7 @@ main( int argc, const char * argv[])
                             arroi.ybegin,
                             arroi.yend
                         ),
-                        { tool.color.x, tool.color.y, tool.color.z },
+                        tool.color,
                         5
                     );
                     
@@ -543,7 +544,7 @@ main( int argc, const char * argv[])
                             arroi.ybegin,
                             arroi.yend
                         ),
-                        { tool.color.x, tool.color.y, tool.color.z },
+                        tool.color,
                         5
                     );
                 }
@@ -554,26 +555,53 @@ main( int argc, const char * argv[])
     // label
     if (tool.label) {
         
-        std::ostringstream oss;
-        oss << "size: "
-            << tool.size.x
-            << ", "
-            << tool.size.y
-            << " "
-            << "aspect ratio: "
-            << tool.aspectratio;
+        // overlay
+        {
+            std::ostringstream oss;
+            oss << "size: "
+                << tool.size.x
+                << ", "
+                << tool.size.y
+                << " "
+                << "aspect ratio: "
+                << tool.aspectratio;
+
+            ImageBufAlgo::render_text(
+                imagebuf,
+                roi.xbegin + roi.width() * 0.01,
+                roi.yend - roi.width() * 0.01,
+                oss.str(),
+                12,
+                "../Roboto.ttf",
+                { tool.color.x, tool.color.y, tool.color.z, 1.0f },
+                ImageBufAlgo::TextAlignX::Left,
+                ImageBufAlgo::TextAlignY::Baseline
+            );
+        }
         
-        ImageBufAlgo::render_text(
-            imagebuf,
-            roi.xbegin + roi.width() * 0.01,
-            roi.yend - roi.width() * 0.01,
-            oss.str(),
-            24,
-            "../Roboto.ttf",
-            { tool.color.x, tool.color.y, tool.color.z },
-            ImageBufAlgo::TextAlignX::Left,
-            ImageBufAlgo::TextAlignY::Baseline
-        );
+        // aspect ratio
+        {
+            std::ostringstream oss;
+            oss << "size: "
+                << arroi.width()
+                << ", "
+                << arroi.height()
+                << " "
+                << "scale: "
+                << tool.scale;
+
+            ImageBufAlgo::render_text(
+                imagebuf,
+                arroi.xbegin + arroi.width() * 0.01,
+                arroi.yend + arroi.width() * 0.01,
+                oss.str(),
+                12,
+                "../Roboto.ttf",
+                { tool.color.x, tool.color.y, tool.color.z, 1.0f },
+                ImageBufAlgo::TextAlignX::Left,
+                ImageBufAlgo::TextAlignY::Top
+            );
+        }
     }
     
     if (!imagebuf.write(tool.outputfile)) {
