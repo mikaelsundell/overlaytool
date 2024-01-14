@@ -217,26 +217,23 @@ ROI aspectRatioBy(ROI roi, float aspectRatio)
     if (ar != aspectRatio)
     {
         int awidth, aheight;
-        int wdiff = 0, hdiff = 0;
+        int hdiff = 0;
+        
         if (ar < aspectRatio)
-        {
-            awidth =(int)(aspectRatio * roi.height());
-            wdiff = awidth - roi.width();
-        }
-        else
         {
             aheight = (int)(roi.width() / aspectRatio);
             hdiff = aheight - roi.height();
         }
+        
         int cx = roi.xbegin + roi.width() / 2;
         int cy = roi.ybegin + roi.height() / 2;
 
         ROI arroi = roi;
         {
-            arroi.xbegin = cx - arroi.width() / 2 - wdiff / 2;
-            arroi.xend = arroi.xbegin + arroi.width() + wdiff - wdiff / 2;
+            arroi.xbegin = cx - arroi.width() / 2;
+            arroi.xend = arroi.xbegin + arroi.width();
             arroi.ybegin = cy - arroi.height() / 2 - hdiff / 2;
-            arroi.yend = arroi.ybegin + arroi.height() + hdiff - hdiff / 2;
+            arroi.yend = arroi.ybegin + aheight;
         }
         return arroi;
     }
@@ -350,7 +347,7 @@ main( int argc, const char * argv[])
         imagebuf,
         roi,
         tool.color,
-        4
+        2
     );
     
     // aspect ratio
@@ -359,7 +356,7 @@ main( int argc, const char * argv[])
         imagebuf,
         arroi,
         tool.color,
-        4
+        2
     );
     
     // center point
