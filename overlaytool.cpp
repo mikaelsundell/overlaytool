@@ -219,8 +219,10 @@ ROI aspectRatioBy(ROI roi, float aspectRatio)
         int awidth, aheight;
         int hdiff = 0;
         
-        if (ar < aspectRatio)
-        {
+        if (ar < aspectRatio) {
+            aheight = (int)(roi.width() / aspectRatio);
+            hdiff = aheight - roi.height();
+        } else {
             aheight = (int)(roi.width() / aspectRatio);
             hdiff = aheight - roi.height();
         }
