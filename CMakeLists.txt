@@ -34,3 +34,7 @@ target_link_libraries( ${project_name}
     ${IMATH_LIBRARIES}  
     ${OIIO_LIBRARIES}
 )
+
+install(TARGETS ${project_name}
+    RUNTIME DESTINATION bin
+)
