@@ -1,4 +1,4 @@
-Readme for overlaytool
+README for symmetrytool
 ==================
 
 [![License](https://img.shields.io/badge/license-BSD%203--Clause-blue.svg?style=flat-square)](https://github.com/mikaelsundell/logctool/blob/master/README.md)
@@ -6,14 +6,14 @@ Readme for overlaytool
 Introduction
 ------------
 
-overlaytool is a utility for creating overlay images.
+symmetrytool is a utility for exploring the mathematics of symmetry as applied to art and design.
 
-![Sample image or figure.](images/image.png 'it8tool')
+![Sample image or figure.](images/image.png 'symmetrytool')
 
 Building
 --------
 
-The overlaytool app can be built both from commandline or using optional Xcode `-GXcode`.
+The symmetrytool app can be built both from commandline or using optional Xcode `-GXcode`.
 
 ```shell
 mkdir build
@@ -34,21 +34,21 @@ cmake .. -DCMAKE_MODULE_PATH=<path>/modules -DCMAKE_PREFIX_PATH=<path>/3rdparty/
 Usage
 -----
 
-Print overlaytool help message with flag ```--help```.
+Print symmetrytool help message with flag ```--help```.
 
 ```shell
-overlaytool -- a utility for creating overlay images
+symmetrytool -- a utility for creating symmetry images
 
-Usage: overlaytool [options] ...
+Usage: symmetrytool [options] ...
 
 General flags:
     --help                     Print help message
     -v                         Verbose status messages
     -d                         Debug status messages
 Input flags:
-    --centerpoint              Use centerpoint for overlay
-    --symmetrygrid             Use symmetry grid for overlay
-    --label                    Use label for overlay
+    --centerpoint              Use centerpoint for symmetry
+    --symmetrygrid             Use symmetry grid for symmetry
+    --label                    Use label for symmetry
     --aspectratio ASPECTRATIO  Set aspectratio (default:1.5)
     --scale SCALE              Set scale (default: 0.5)
     --color COLOR              Set color (default: 1.0, 1.0, 1.0)
@@ -59,7 +59,7 @@ Output flags:
 
 **Input flags**
 
-The input flags are used to set-up the overlay geometry. 
+The input flags are used to set-up the symmetry geometry. 
 
 ```--centerpoint``` centerpoint cross added to the center of the aspect ratio geometry   
 ```--symmetrygrid ``` symmetry grid inside aspect ratio geometry    
@@ -70,17 +70,17 @@ The input flags are used to set-up the overlay geometry.
 
 **Output flags**
 
-```--outputfile``` overlay output file
+```--outputfile``` symmetry output file
 
 
-Example overlay image
+Example symmetry image
 --------
 
 ```shell
-./overlaytool
+./symmetrytool
 --symmetrygrid
 --aspectratio 2.35 
---outputfile overlay.png 
+--outputfile symmetry.png 
 --size "2350,1000" 
 --scale 0.8 
 ```
@@ -88,7 +88,7 @@ Example overlay image
 Download
 ---------
 
-Overlay is included as part of pipeline tools. You can download it from the releases page:
+Symmetrytool is included as part of pipeline tools. You can download it from the releases page:
 
 * https://github.com/mikaelsundell/pipeline/releases
 
@@ -105,9 +105,9 @@ Project
 -------------
 
 * GitHub page   
-https://github.com/mikaelsundell/overlaytool
+https://github.com/mikaelsundell/symmetrytool
 * Issues   
-https://github.com/mikaelsundell/overlaytool/issues
+https://github.com/mikaelsundell/symmetrytool/issues
 
 
 Resources

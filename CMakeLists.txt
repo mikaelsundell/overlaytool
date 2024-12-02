@@ -1,9 +1,9 @@
-# Copyright 2023-present Contributors to the overlaytool project.
+# Copyright 2023-present Contributors to the symmetrytool project.
 # SPDX-License-Identifier: BSD-3-Clause
-# https://github.com/mikaelsundell/overlaytool
+# https://github.com/mikaelsundell/symmetrytool
 
 cmake_minimum_required(VERSION 3.23)
-set (project_name "overlaytool")
+set (project_name "symmetrytool")
 
 project ("${project_name} project")
 
@@ -22,7 +22,7 @@ configure_file (
 )
 
 # package
-add_executable (${project_name} "overlaytool.cpp")
+add_executable (${project_name} "symmetrytool.cpp")
 set_property (TARGET ${project_name} PROPERTY CXX_STANDARD 14)
 
 include_directories (

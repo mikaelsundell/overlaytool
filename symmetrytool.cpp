@@ -47,8 +47,8 @@ print_error(std::string param, const T& value)
     std::cerr << "error: " << param << value << std::endl;
 }
 
-// overlay tool
-struct OverlayTool
+// symmetry tool
+struct SymmetryTool
 {
     bool help = false;
     bool verbose = false;
@@ -64,7 +64,7 @@ struct OverlayTool
     int code = EXIT_SUCCESS;
 };
 
-static OverlayTool tool;
+static SymmetryTool tool;
 
 static int
 set_outputfile(int argc, const char* argv[])
@@ -264,8 +264,8 @@ main( int argc, const char * argv[])
     Filesystem::convert_native_arguments(argc, (const char**)argv);
     ArgParse ap;
 
-    ap.intro("overlaytool -- a utility for creating overlay images\n");
-    ap.usage("overlaytool [options] ...")
+    ap.intro("symmetrytool -- a utility for creating symmetry images\n");
+    ap.usage("symmetrytool [options] ...")
       .add_help(false)
       .exit_on_error(true);
     
@@ -281,13 +281,13 @@ main( int argc, const char * argv[])
     
     ap.separator("Input flags:");
     ap.arg("--centerpoint", &tool.centerpoint)
-      .help("Use centerpoint for overlay");
+      .help("Use centerpoint for symmetry");
     
     ap.arg("--symmetrygrid", &tool.symmetrygrid)
-      .help("Use symmetry grid for overlay");
+      .help("Use symmetry grid for symmetry");
     
     ap.arg("--label", &tool.label)
-      .help("Use label for overlay");
+      .help("Use label for symmetry");
        
     ap.arg("--aspectratio %s:ASPECTRATIO")
       .help("Set aspectratio (default:1.5)")
@@ -331,18 +331,18 @@ main( int argc, const char * argv[])
     }
     if (argc <= 1) {
         ap.briefusage();
-        std::cout << "\nFor detailed help: overlaytool --help\n";
+        std::cout << "\nFor detailed help: symmetrytool --help\n";
         return EXIT_FAILURE;
     }
 
-    // overlay program
-    std::cout << "overlaytool -- a utility for creating overlay images" << std::endl;
+    // symmetry program
+    std::cout << "symmetrytool -- a utility for creating symmetry images" << std::endl;
 
-    print_info("Writing overlay file: ", tool.outputfile);
+    print_info("Writing symmetry file: ", tool.outputfile);
     ImageSpec spec(tool.size.x, tool.size.y, 4, TypeDesc::FLOAT);
     ImageBuf imagebuf(spec);
     
-    // overlay
+    // symmetry
     ROI roi(0, tool.size.x, 0, tool.size.y);
 
     renderBoxByThickness(
@@ -553,8 +553,7 @@ main( int argc, const char * argv[])
     
     // label
     if (tool.label) {
-        
-        // overlay
+        // symmetry
         {
             std::ostringstream oss;
             oss << "size: "
