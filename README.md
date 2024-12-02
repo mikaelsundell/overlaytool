@@ -6,7 +6,7 @@ Symmetrytool
 Introduction
 ------------
 
-symmetrytool is a utility for exploring the mathematics of symmetry as applied to art and design.
+symmetrytool is a utility for exploring the math of symmetry in art and design.
 
 ![Sample image or figure.](images/image.png 'symmetrytool')
 
